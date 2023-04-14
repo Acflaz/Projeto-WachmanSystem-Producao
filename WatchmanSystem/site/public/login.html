@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./style/style-login.css" />
+  <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
+  <script src="js/script.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <title>WS | Login</title>
+</head>
+
+<body>
+  <main class="main">
+    <div class="left-content">
+
+      <div class="top">
+        <a onclick="voltarHomeLogin()">
+          <img src="./assets/arrow-left-blue.png" alt="Botão voltar">
+          Voltar
+        </a>
+      </div>
+
+      <div class="middle">
+        <img src="./assets/logoCompleto.png" alt="Logo da empresa - Watchman System.">
+      </div>
+
+      <div class="bottom">
+        <a href="" target="_blank">
+          <img src="./assets/logo-instagram.png" alt="Instagram">
+        </a>
+        <a href="" target="_blank">
+          <img src="./assets/logo-facebook.png" alt="Facebook">
+        </a>
+        <a href="" target="_blank">
+          <img src="./assets/logo-twitter.png" alt="Twitter">
+        </a>
+      </div>
+
+    </div>
+
+    <div class="right-content">
+      <div class="top mobileOnly">
+        <a href="../public/index.html">
+          <img src="./assets/arrow-left-blue.png" alt="Botão voltar">
+        </a>
+      </div>
+
+      <div class="logo mobileOnly">
+        <img src="./assets/Logo-mobile.png" alt="Logo da empresa - Watchman System.">
+      </div>
+
+      <div class="middle">
+
+        <div class="content-middle">
+          <h3>Acesse</h3>
+          <span>Por favor, preencha suas informações abaixo</span>
+
+          <form class="form">
+
+            <span class="user">
+              <input class="btn" type="text" placeholder="Usuário" id="usuario">
+            </span>
+
+            <span class="password">
+              <input class="btn" type="password" placeholder="Senha" id="senha">
+            </span>
+
+            <a class="btn-enter" onclick="entrar()">
+              Entrar
+              <img src="./assets/arrow-right-white.png" alt="">
+            </a>
+          </form>
+        </div>
+
+      </div>
+
+
+      <div class="bottom">
+        <span>Copyright @ 2022</span>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>
+
+<script>
+  function entrar() {
+    var usuarioVar = usuario.value;
+    var senhaVar = senha.value;
+
+    if (usuarioVar == "" || senhaVar == "") {
+      swal("Erro!", "Preencha todos os campos", "error");
+
+      return false;
+    }
+    else {
+
+      console.log("FORM LOGIN: ", usuarioVar);
+      console.log("FORM SENHA: ", senhaVar);
+
+      fetch("/usuarios/autenticar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          usuarioServer: usuarioVar,
+          senhaServer: senhaVar
+        })
+      }).then(function (resposta) {
+        console.log("ESTOU NO THEN DO entrar()!")
+
+        if (resposta.ok) {
+          swal("Login realizado com sucesso!", " Redirecionando para tela de Cadastro de Usuário...", "success");
+          console.log(resposta);
+
+          resposta.json().then(json => {
+            console.log(json);
+            console.log(JSON.stringify(json));
+
+            sessionStorage.USUARIO = json.usuario;
+            sessionStorage.SENHA_USUARIO = json.senha;
+            sessionStorage.ID_USUARIO = json.idUsuario;
+            sessionStorage.ID_EMPRESA = json.idEmpresa;
+
+            setTimeout(function () {
+              window.location = "cadastro_usuario.html";
+            }, 1000); // apenas para exibir o loading
+
+          });
+
+        } else {
+
+          console.log("Houve um erro ao tentar realizar o login!");
+
+          resposta.text().then(texto => {
+            console.error(texto);
+          });
+        }
+
+      }).catch(function (erro) {
+        console.log(erro);
+      })
+
+      return false;
+    }
+  }
+</script>
