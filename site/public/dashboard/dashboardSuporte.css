@@ -96,7 +96,7 @@ nav img {
     height: 50px;
     border-radius: 50%;
     margin-left: 1rem;
-    background-image: url(assets/joseph-gonzalez-iFgRcqHznqg-unsplash.jpg);
+    background-image: url(assets/suporte.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -192,6 +192,7 @@ nav img {
     width: 190vh;
     border-radius: 15px;
     cursor: pointer;
+    overflow-y: scroll;
 }
 
 .primeiroGrupo{
@@ -205,13 +206,13 @@ nav img {
     background-color: #141E30;
     margin: 10px;
     width: 280px;
-    height: 210px;
+    height: 160px;
     border-radius: 25px;
 }
 
 .containerTela .date{
     color: #D9D9D9;
-    font-size: 10px;
+    font-size: 14px;
     margin: 15px 20px;
 }
 
@@ -225,6 +226,7 @@ nav img {
     color: white;
     margin-top: 1rem;
     font-size: 25px;
+    margin-bottom: 2rem;
 }
 
 .contentVerticalTelas p{
@@ -245,7 +247,7 @@ nav img {
 
 .hours{
     color: #D9D9D9;
-    font-size: 10px;
+    font-size: 14px;
     margin: 5px 20px;
 }
 
@@ -256,9 +258,33 @@ nav img {
     justify-content: space-between;
 }
 
-/* Fim */
-/* 
-main{
-    position: relative;
-    width: 100%;
-} */
+body::-webkit-scrollbar {
+    width: 12px;            
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #101017;       
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #1B98E0; 
+    border-radius: 20px;     
+    border: 3px solid #101017;  
+  }
+
+  .sectionTelas::-webkit-scrollbar-track{
+	/*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+	border-radius:0;
+	background-color: #D0D4CE;
+}
+
+.sectionTelas::-webkit-scrollbar{
+	width: 6px;
+	background-color: #D0D4CE;
+}
+
+.sectionTelas::-webkit-scrollbar-thumb{
+	border-radius:0;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #358be0;
+}

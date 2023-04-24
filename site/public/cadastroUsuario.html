@@ -75,18 +75,18 @@
     </div>
   </section>
 </body>
-
+ 
 </html>
 
 <script>
   function cadastrar_usuario() {
     const idEmpresaVar = sessionStorage.getItem("ID_EMPRESA");
     var nomeUsuarioVar = input_user.value;
+    var opcaoSelecionadaVar = select_user.value;
     var emailVar = input_email.value;
     var senhaVar = input_senha.value;
-    var opcaoSelecionada = document.getElementById("select_user").value;
 
-    if (nomeUsuarioVar == "" || emailVar == "" || senhaVar == "" || opcaoSelecionada == "") {
+    if (nomeUsuarioVar == "" || emailVar == "" || senhaVar == "" || opcaoSelecionadaVar == "") {
       swal("Erro!", "Preencha todos os campos", "error");
       return false;
     }
@@ -99,8 +99,9 @@
         body: JSON.stringify({
           idEmpresaServer: idEmpresaVar,
           nomeUsuarioServer: nomeUsuarioVar,
+          opcaoEscolhidaServer:  opcaoSelecionadaVar,
           emailServer: emailVar,
-          senhaServer: senhaVar
+          senhaServer: senhaVar,
         })
       }).then(function (resposta) {
         console.log("resposta: ", resposta);
@@ -111,16 +112,16 @@
             console.log(json);
             console.log(JSON.stringify(json));
 
-            switch (opcaoSelecionada) {
+            switch (opcaoSelecionadaVar) {
               case "supervisor":
                 setTimeout(() => {
-                  window.location = "./dashboard/dashboard.html";
+                  window.location = "./dashboard/graficos.html";
                 }, 2000);
                 break;
 
               case "suporte":
                 setTimeout(() => {
-                  window.location = "./dashboard/dashboard.html";
+                  window.location = "./dashboard/dashboardSuporte.html";
                 }, 2000);
                 break;
 
@@ -137,6 +138,7 @@
 
           });
         } else {
+          swal("Houve um erro ao tentar realizar o cadastro!", "Erro", "error");
           throw ("Houve um erro ao tentar realizar o cadastro!");
         }
       }).catch(function (resposta) {

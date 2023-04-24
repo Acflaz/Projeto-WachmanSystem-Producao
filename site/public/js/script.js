@@ -19,5 +19,9 @@ function criarConta(){
 }
 
 function voltarCadastroUsuario(){
-    window.location="./cadastro_usuario.html"
+    window.location="./index.html"
+}
+
+function home(){
+    window.location="./index.html"
 }

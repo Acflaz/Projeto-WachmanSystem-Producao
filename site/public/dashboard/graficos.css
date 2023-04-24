@@ -107,18 +107,50 @@ nav img {
     margin-right: 2rem;
 }
 
-/* Fim seção do perfil */
-
-/*  */
-
-.sectionTelas{
-    position: absolute;
+.sectionKpi{
+    position: relative;
     top: 0;
     left: 0;
-    transform: translate(9%, 30%);
+    transform: translate(8%, 20%);
+    background-color: #171821;
+    height: 300px;
+    width: 180vh;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.containerKPI{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.containerKPI h1{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #FFF;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.containerKPI .informationAnalytics{
+    display: flex;
+    justify-content: center;
+}
+
+.sectionKpi .graficoKpi{
+    width: 240px;
+}
+
+.sectionTelas{
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: translate(8%, 15%);
     background-color: #171821;
     height: 520px;
-    width: 190vh;
+    width: 180vh;
     border-radius: 15px;
     cursor: pointer;
 }
@@ -127,21 +159,35 @@ nav img {
     height: 230px;
     margin: 20px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
-.containerTela{
+.containerTela1, .containerTela2, .containerTela3, .containerTela4,
+.containerTela5, .containerTela6, .containerTela7, .containerTela8{
     background-color: #141E30;
-    margin: 10px;
+    margin: 27px 15px;
     width: 280px;
     height: 210px;
     border-radius: 5px;
 }
 
-.containerTela h1{
-    margin: 15px 20px;
+.containerTela8{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerTela1, .containerTela2, .containerTela3, .containerTela4,
+.containerTela5, .containerTela6, .containerTela7, .containerTela8 h1{
+    padding: 20px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
+    text-align: center;
+}
+
+.containerTela8 h1{
+    font-size: 85px;
+    color: #596f96;
 }
 
 .contentVerticalTelas{
@@ -158,11 +204,12 @@ nav img {
     height: 230px;
     margin: 20px;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
 }
 
 .contentProdutividade{
     display: flex;
+    flex-direction: column;
     justify-content: first baseline;
     align-items: center;
     gap: 10px;
@@ -171,3 +218,16 @@ nav img {
     font-size: 12px;
 }
 
+body::-webkit-scrollbar {
+    width: 12px;            
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: #101017;       
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #1B98E0; 
+    border-radius: 20px;     
+    border: 3px solid #101017;  
+  }

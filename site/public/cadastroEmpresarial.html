@@ -51,8 +51,6 @@
                     <img src="./assets/icnEmpresa.png" alt="" class="cnpj"><input type="text" placeholder="CNPJ" id="cnpj">
                     <img src="./assets/icnResponsavel.png" alt="" class="emailResp"><input type="text" placeholder="E-mail responsável" id="emailResponsavel">
                     <img src="./assets/icnTelefone.png" alt="" class="telefone"><input type="text" placeholder="Telefone" id="telefone">
-                    <img src="./assets/icon-user.png" alt="" class="user"><input type="text" placeholder="Usuário" id="user">
-                    <img src="./assets/icon-password.png" alt="" class="password"><input type="password" placeholder="Senha" id="senhaUser">
                 </div>
                 <div class="btn-enviar">
                     <button onclick="cadastrar_empresa()"><span>Enviar</span><img src="./assets/Path.png"alt=""></button>
@@ -70,11 +68,8 @@
         var cnpjVar = cnpj.value;
         var emailVar = emailResponsavel.value;
         var telefoneVar = telefone.value;
-        var userVar = user.value;
-        var senhaVar = senhaUser.value;
 
-
-        if (nomeFantasiaVar == "" || cnpjVar == "" || emailVar == "" || telefoneVar == "" || userVar == "" || senhaVar == "") {
+        if (nomeFantasiaVar == "" || cnpjVar == "" || emailVar == "" || telefoneVar == "") {
             swal("Erro!", "Preencha todos os campos", "error");
 
             return false;
@@ -89,9 +84,7 @@
                     nomeServer: nomeFantasiaVar,
                     cnpjServer: cnpjVar,
                     emailServer: emailVar,
-                    telefoneServer: telefoneVar,
-                    usuarioServer: userVar,
-                    senhaServer: senhaVar
+                    telefoneServer: telefoneVar
                 })
             }).then(function (resposta) {
 
@@ -106,11 +99,12 @@
                         sessionStorage.ID_EMPRESA = json.insertId;
 
                         setTimeout(function () {
-                            window.location = "login.html";
+                            window.location = "cadastroAdm.html";
                         }, 2000); // apenas para exibir o loading
                     });
 
                 } else {
+                    swal("Houve um erro ao tentar realizar o cadastro!", "Erro", "error");
                     throw ("Houve um erro ao tentar realizar o cadastro!");
                 }
             }).catch(function (resposta) {

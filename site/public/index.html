@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +8,8 @@
     <link rel="stylesheet" href="./style/index.css">
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <script src="js/script.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <title>Watchman System</title>
 </head>
 
@@ -38,7 +39,7 @@
                     <h2>MENTES CRIATIVAS, PROJETOS CRIATIVOS</h2>
                     <h1>A Tecnologia da Evolução.</h1>
                 </div>
-                <div class="cards">
+                <div class="cards" data-aos="fade-up">
                     <div class="card">
                         <img src="./assets/plane.png" class="card-img-1">
                         <h2 class="card-text">Conceito de Futuro</h2>
@@ -58,7 +59,7 @@
             </div>
     </section>
         <section class="services" id="services">
-            <div class="services-content">
+            <div class="services-content" data-aos="fade-right">
                 <div class="content-group-line-title">
                     <img src="./assets/Line 8.png" alt="">
                 </div>
@@ -109,7 +110,7 @@
                 </div>
             </div>
         </section>
-        <section class="aboutUs" id="aboutUs">
+        <section class="aboutUs" id="aboutUs" data-aos="fade-down">
             <div class="aboutUs-content">
                 <div class="content-group-line-title">
                     <img src="./assets/Line 8.png" alt="">
@@ -149,7 +150,7 @@
             </div>
         </section>
         <hr>
-        <section class="howItWorks" id="howItWorks">
+        <section class="howItWorks" id="howItWorks" data-aos="fade-right">
             <div class="howItWorks-content">
                 <h2>Trabalhos</h2>
                 <h3>CONFIRA ALGUMAS DE NOSSAS NOVIDADES</h3>
@@ -228,6 +229,8 @@
 </html>
 
 <script>
+      AOS.init();
+
     function clickMenu() {
         if (menu.style.display == 'flex') {
             menu.style.display = 'none';

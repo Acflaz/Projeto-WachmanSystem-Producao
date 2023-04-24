@@ -3,7 +3,7 @@ var sql = require('mssql');
 
 // CONEXÃO DO SQL SERVER - AZURE (NUVEM)
 var sqlServerConfig = {
-    server: "svr-watchmansystem-teste.database.windows.net",
+    server: "srv-watchmansystem.database.windows.net",
     database: "bd-watchmansystem",
     user: "admin-projeto",
     password: "#Gfgrupo2",

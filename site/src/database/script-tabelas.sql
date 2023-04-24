@@ -5,7 +5,6 @@
 /*
 comandos para mysql - banco local - ambiente de desenvolvimento
 */
-
 create database watchmanSystem;
 use watchmanSystem;
 
@@ -14,9 +13,7 @@ idEmpresa int primary key auto_increment,
 nomeFantasia varchar(45),
 cnpj char(15),
 emailResponsavel varchar(35),
-telefone varchar(45),
-usuario varchar(45),
-senha varchar(45)
+telefone varchar(45)
 );
 
 SELECT * FROM empresa;
@@ -26,6 +23,12 @@ create table alerta(
 idAlerta int primary key auto_increment,
 minCpu decimal(10,2),
 maxCpu decimal(10,2),
+minDisco decimal(10,2),
+maxDisco decimal(10,2),
+minMemoria decimal(10,2),
+maxMemoria decimal(10,2),
+minRede decimal(10,2),
+maxRede decimal(10,2),
 fkEmpresa int,
 foreign key (fkEmpresa) references empresa (idEmpresa)
 );
@@ -35,12 +38,13 @@ idUsuario int auto_increment,
 nome varchar(45),
 email varchar(35),
 senha varchar(45),
+tipo varchar(45),
+constraint chkTipo check( tipo in ('root','supervisor','suporte', 'atendente')),
 fkEmpresa INT,
 FOREIGN KEY (fkEmpresa) references empresa (idEmpresa),
 primary key(idUsuario, fkEmpresa)
 );
---garante que cada combinação de idUsuario e fkEmpresa seja única e, portanto, só é possível ter uma entrada para cada combinação na tabela usuario. --
-
+-- garante que cada combinação de idUsuario e fkEmpresa seja única e, portanto, só é possível ter uma entrada para cada combinação na tabela usuario. --
 
 SELECT * FROM usuario;
 
@@ -81,50 +85,64 @@ foreign key (fkEmpresa) references empresa (idEmpresa)
 comando para sql server - banco remoto - ambiente de produção
 */
 
+CREATE TABLE empresa (
+idEmpresa INT PRIMARY KEY IDENTITY(1,1),
+nomeFantasia VARCHAR(45),
+cnpj CHAR(15),
+emailResponsavel VARCHAR(35),
+telefone VARCHAR(45)
+);
+
 CREATE TABLE usuario (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	nome VARCHAR(50),
-	email VARCHAR(50),
-	senha VARCHAR(50),
+idUsuario INT IDENTITY(1,1),
+nome VARCHAR(45),
+email VARCHAR(35),
+senha VARCHAR(45),
+tipo VARCHAR(45),
+CONSTRAINT chkTipo CHECK (tipo IN ('root','supervisor','suporte', 'atendente')),
+fkEmpresa INT,
+FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa),
+PRIMARY KEY(idUsuario, fkEmpresa)
 );
 
-CREATE TABLE aviso (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	titulo VARCHAR(100),
-	descricao VARCHAR(150),
-	fk_usuario INT FOREIGN KEY REFERENCES usuario(id)
+CREATE TABLE alerta (
+idAlerta INT PRIMARY KEY IDENTITY(1,1),
+minCpu DECIMAL(10,2),
+maxCpu DECIMAL(10,2),
+minDisco DECIMAL(10,2),
+maxDisco DECIMAL(10,2),
+minMemoria DECIMAL(10,2),
+maxMemoria DECIMAL(10,2),
+minRede DECIMAL(10,2),
+maxRede DECIMAL(10,2),
+fkEmpresa INT,
+FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
-create table aquario (
-/* em nossa regra de negócio, um aquario tem apenas um sensor */
-	id INT PRIMARY KEY IDENTITY(1,1),
-	descricao VARCHAR(300)
+CREATE TABLE notebook (
+idNotebook INT PRIMARY KEY IDENTITY(1,1),
+marca VARCHAR(45),
+modelo VARCHAR(45),
+capacidadeRam VARCHAR(45),
+tipoDisco VARCHAR(45),
+velocidadeCpu VARCHAR(45),
+fkUsuario INT,
+fkEmpresa INT,
+FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
 );
 
-/* esta tabela deve estar de acordo com o que está em INSERT de sua API do arduino - dat-acqu-ino */
-
-CREATE TABLE medida (
-	id INT PRIMARY KEY IDENTITY(1,1),
-	dht11_umidade DECIMAL,
-	dht11_temperatura DECIMAL,
-	luminosidade DECIMAL,
-	lm35_temperatura DECIMAL,
-	chave TINYINT,
-	momento DATETIME,
-	fk_aquario INT FOREIGN KEY REFERENCES aquario(id)
+CREATE TABLE dadosCapturados (
+idDadosCapturados INT PRIMARY KEY IDENTITY(1,1),
+qtdUsadaRam VARCHAR(45),
+tempoAtvDisco VARCHAR(45),
+tempoAtvCpu VARCHAR(45),
+utilizacaoCpu VARCHAR(45),
+qtdProcessoCpu VARCHAR(45),
+qtdThreadsCpu VARCHAR(45),
+dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
+fkNotebook INT,
+FOREIGN KEY (fkNotebook) REFERENCES notebook (idNotebook),
+fkUsuario INT,
+fkEmpresa INT,
+FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
 );
-
-/*
-comandos para criar usuário em banco de dados azure, sqlserver,
-com permissão de insert + update + delete + select
-*/
-
-CREATE USER [usuarioParaAPIWebDataViz_datawriter_datareader]
-WITH PASSWORD = '#Gf_senhaParaAPIWebDataViz',
-DEFAULT_SCHEMA = dbo;
-
-EXEC sys.sp_addrolemember @rolename = N'db_datawriter',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
-
-EXEC sys.sp_addrolemember @rolename = N'db_datareader',
-@membername = N'usuarioParaAPIWebDataViz_datawriter_datareader';
