@@ -26,7 +26,7 @@ function cadastrar_empresa(nomeFantasia, cnpj, email, telefone) {
     if (process.env.AMBIENTE_PROCESSO === 'producao') {
         instrucao = `
             INSERT INTO empresa (nomeFantasia, cnpj, emailResponsavel, telefone) VALUES ('${nomeFantasia}', '${cnpj}', '${email}', '${telefone}');
-            SELECT 1 as id;
+            SELECT * FROM empresa WHERE idEmpresa = SCOPE_IDENTITY();
         `;
     } else {
         instrucao = `
@@ -46,12 +46,12 @@ function cadastrar_usuario(nomeUsuario, email, senha, opcao, idEmpresa) {
     if(process.env.AMBIENTE_PROCESSO === 'producao'){
         instrucao = `
             INSERT INTO usuario (nome, email, senha, tipo, fkEmpresa) VALUES ('${nomeUsuario}', '${email}', '${senha}', '${opcao}', '${idEmpresa}');
-            SELECT 1 as id;
+            SELECT * FROM usuario WHERE idUsuario = SCOPE_IDENTIFY();
             `;
     }else{
         instrucao = `
             INSERT INTO usuario (nome, email, senha, tipo, fkEmpresa) VALUES ('${nomeUsuario}', '${email}', '${senha}', '${opcao}', '${idEmpresa}');
-        `;
+            `;
     }
     
     console.log("Executando a instrução SQL: \n" + instrucao);
