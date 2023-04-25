@@ -21,9 +21,19 @@ function entrar(usuario, senha, opcao) {
 function cadastrar_empresa(nomeFantasia, cnpj, email, telefone) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar_empresa():", nomeFantasia, cnpj, email, telefone);
     
-    var instrucao = `
-        INSERT INTO empresa (nomeFantasia, cnpj, emailResponsavel, telefone) VALUES ('${nomeFantasia}', '${cnpj}', '${email}', '${telefone}');
-    `;
+    var instrucao;
+
+    if (process.env.AMBIENTE_PROCESSO === 'producao') {
+        instrucao = `
+            INSERT INTO empresa (nomeFantasia, cnpj, emailResponsavel, telefone) VALUES ('${nomeFantasia}', '${cnpj}', '${email}', '${telefone}');
+            SELECT 1 as id;
+        `;
+    } else {
+        instrucao = `
+            INSERT INTO empresa (nomeFantasia, cnpj, emailResponsavel, telefone) VALUES ('${nomeFantasia}', '${cnpj}', '${email}', '${telefone}');
+        `;
+    }
+
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 } 
