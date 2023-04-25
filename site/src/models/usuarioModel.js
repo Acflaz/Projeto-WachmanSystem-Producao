@@ -46,7 +46,7 @@ function cadastrar_usuario(nomeUsuario, email, senha, opcao, idEmpresa) {
     if(process.env.AMBIENTE_PROCESSO === 'producao'){
         instrucao = `
             INSERT INTO usuario (nome, email, senha, tipo, fkEmpresa) VALUES ('${nomeUsuario}', '${email}', '${senha}', '${opcao}', '${idEmpresa}');
-            SELECT * FROM usuario WHERE idUsuario = SCOPE_IDENTIFY();
+            SELECT * FROM usuario WHERE idUsuario = SCOPE_IDENTITY();
             `;
     }else{
         instrucao = `
