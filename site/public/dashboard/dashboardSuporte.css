@@ -119,7 +119,7 @@ nav img {
     margin-top: 2rem;
     background-color: #21222D;
     height: 250px;
-    width: 190vh;
+    width: 180vh;
     border-radius: 15px;
     cursor: default;
 }
@@ -189,7 +189,7 @@ nav img {
     transform: translate(8%, 85%);
     background-color: #171821;
     height: 520px;
-    width: 190vh;
+    width: 180vh;
     border-radius: 15px;
     cursor: pointer;
     overflow-y: scroll;

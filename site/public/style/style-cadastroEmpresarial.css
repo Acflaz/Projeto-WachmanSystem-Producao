@@ -101,38 +101,24 @@
   color: black;
 }
 
-.form .nomeFantasia, .cnpj, .emailResp, 
-.telefone, .user, .password {
-  width: 20px;
-  position: absolute;
-  right: 370px;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-}
-
 .nomeFantasia{
-  top: 30%;
+  background: url(../assets/icnEmpresa.png) no-repeat left / 17px;
+  background-position: 8px;
 }
 
 .cnpj{
-  top: 45%;
+  background: url(../assets/icnEmpresa.png) no-repeat left / 17px;
+  background-position: 8px;
 }
 
 .emailResp{
-  top: 62%;
+  background: url(../assets/icnResponsavel.png) no-repeat left / 17px;
+  background-position: 8px;
 }
 
 .telefone{
-  top: 78%;
-}
-
-.user{
-  top: 94%;
-}
-
-.password{
-  top: 109%;
+  background: url(../assets/icnTelefone.png) no-repeat left / 17px;
+  background-position: 8px;
 }
 
 .btn-enviar {
