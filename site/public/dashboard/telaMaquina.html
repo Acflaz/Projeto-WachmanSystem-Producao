@@ -128,7 +128,7 @@
                         sessionStorage.ID_USUARIO = json[0].idUsuario;
                         // console(json.idUsuario);
                         // console(json.fkEmpresa);
-                        sessionStorage.ID_EMPRESA = json[0].fkEmpresa;
+                        sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
 
                         setTimeout(function () {
@@ -183,7 +183,7 @@
                         console.log(json);
                         console.log(JSON.stringify(json));
 
-                        sessionStorage.ID_USUARIO = json.idUsuario;
+                        sessionStorage.ID_USUARIO = json[0].idUsuario;
                         // console(json.idUsuario);
                         // console(json.fkEmpresa);
                         sessionStorage.ID_EMPRESA = json.fkEmpresa;
