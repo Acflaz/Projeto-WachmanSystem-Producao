@@ -201,11 +201,17 @@
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-       
-                        // sessionStorage.ID_EMPRESA = json[0].fkEmpresa;
+
+                        //Não utilizar sessão nas telas que necessitam reload. Só na tela de cadastro.
+                        // sessionStorage.ID_USUARIO = json.idUsuario;
+                        // // console(json.idUsuario);
+                        // // console(json.fkEmpresa);
+                        // sessionStorage.ID_EMPRESA = json.fkEmpresa;
+                       
+
 
                         setTimeout(function () {
-                            window.location = "graficos.html";
+                            window.location = "telaMetricas.html";
                         }, 2000); // apenas para exibir o loading
                     });
 

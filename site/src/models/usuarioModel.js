@@ -128,7 +128,7 @@ function updateForm(minimoCpuVar, minimoMemoriaVar, maximoCpuVar, maximoMemoriaV
 
     if (process.env.AMBIENTE_PROCESSO === 'producao') {
         instrucao = `
-        UPDATE alerta SET minCpu = '${minimoCpuVar}', maxCpu = '${maximoCpuVar}', minMemoria = '${minimoMemoriaVar}', maxMemoria = '${maximoMemoriaVar}' WHERE fkEmpresa = '${idEmpresa}';
+        UPDATE alerta SET minCpu = '${minimoCpuVar}', maxCpu = '${maximoCpuVar}', minMemoria = '${minimoMemoriaVar},' maxMemoria = '${maximoMemoriaVar}' WHERE fkEmpresa = '${idEmpresa}';
         SELECT * FROM empresa WHERE idEmpresa = SCOPE_IDENTITY();
         `;
     } else {
