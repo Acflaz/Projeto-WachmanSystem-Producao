@@ -132,17 +132,17 @@
                 console.log("resposta: ", resposta);
 
                 if (resposta.ok) {
-                    swal("Cadastro das metricas realizado com sucesso!", " Cadastrado", "success");
+                    swal("Cadastro das métricas realizado com sucesso!", " Cadastrado", "success");
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
 
 
-                        sessionStorage.ID_EMPRESA = json[0].fkEmpresa;
+                        // sessionStorage.ID_EMPRESA = json.fkEmpresa;
 
 
                         setTimeout(function () {
-                            window.location = "telaMetricas.html";
+                            window.location = "graficos.html";
                         }, 2000); // apenas para exibir o loading   
                     });
 
@@ -201,18 +201,11 @@
                     resposta.json().then(json => {
                         console.log(json);
                         console.log(JSON.stringify(json));
-
-                        //Não utilizar sessão nas telas que necessitam reload. Só na tela de cadastro.
-                        // sessionStorage.ID_USUARIO = json.idUsuario;
-                        // // console(json.idUsuario);
-                        // // console(json.fkEmpresa);
-                        // sessionStorage.ID_EMPRESA = json.fkEmpresa;
-                        sessionStorage.ID_EMPRESA = json[0].fkEmpresa;
-                       
-
+       
+                        // sessionStorage.ID_EMPRESA = json[0].fkEmpresa;
 
                         setTimeout(function () {
-                            window.location = "telaMetricas.html";
+                            window.location = "graficos.html";
                         }, 2000); // apenas para exibir o loading
                     });
 

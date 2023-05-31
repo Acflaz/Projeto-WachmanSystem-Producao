@@ -5,15 +5,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-geral-acesso.css">
+    <!-- <link rel="stylesheet" href="style-geral-acesso.css"> -->
     <link rel="stylesheet" href="graficos.css">
     <link rel="shortcut icon" href="./assets/logo.png" type="image/x-icon">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="chart.js"></script> -->
     <title>Dashboard | Gráficos</title>
 </head>
 
-<body>
-    <main>
+<body onload="obterDadosGrafico()">
         <section class="navbar">
             <div class="logo">
                 <img src="assets/logo.png" alt="" onclick="home()">
@@ -25,6 +26,12 @@
                 <li><a href="telaMetricas.html">
                         <img src="assets/configuracoes.png" alt="">
                     </a></li>
+                <li><a href="telaMaquina.html">
+                        <img src="../assets/aba.png" alt="">
+                    </a></li>
+                <li><a href="https://watchmansystem.atlassian.net/jira/servicedesk/projects/WS/queues/custom/19">
+                        <img src="../assets/apoio-suporte.png" alt="">
+                    </a></li>
             </nav>
             <div class="logout">
                 <li><a href="../login.html">
@@ -33,268 +40,341 @@
             </div>
         </section>
 
+    <main>
         <section class="sectionPerfil" onclick="entrarPerfil()">
             <div class="containerPerfil">
-                <div class="contentImage" id="imageUser">
-
-                </div>
-                <div class="contentName">
-                    <p id="nameUser">Erick San.</p>
-                </div>
+              <div class="contentImage" id="imageUser">
+      
+              </div>
+              <div class="contentName">
+                <p id="nameUser">Suporte</p>
+              </div>
             </div>
-        </section>
+          </section>
 
-        <!---->
-        <section class="sectionKpi">
-            <div class="containerKPI">
-                <h1> Indicadores de Produtividade: </h1>
+          <section class="sectionKPI">
+            <div class="GroupKPI">
+              <div class="containerKPI">
+                <h1> Indicadores de Produtividade </h1>
                 <div class="informationAnalytics">
                     <div class="graficoKpi">
                         <canvas id="kpi"></canvas>
                     </div>
                 </div>
-            </div>
-        </section>
+              </div>
+            </section>
 
-        <section class="sectionTelas">
+            <section class="sectionTelas">
+                <div class="center">
+                    <div class="primeiroGrupo">
+                        <div class="containerTela1">
+                            <h1 id="user 1">Máquina 1</h1>
+                            <canvas id="lineChart1"></canvas>
+                        </div>
+                        <div class="containerTela2">
+                            <h1 id="user 2">Máquina 2</h1>
+                            <canvas id="lineChart2"></canvas>
+                        </div>
+                        <div class="containerTela3">
+                            <h1 id="user 3">Máquina 3</h1>
+                            <canvas id="lineChart3"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="segundoGrupo">
+                        <div class="containerTela4">
+                            <h1 id="user 4">Máquina 4</h1>
+                            <canvas id="lineChart4"></canvas>
+                        </div>
+                        <div class="containerTela5">
+                            <h1 id="user 5">Máquina 5</h1>
+                            <canvas id="lineChart5"></canvas>
+                        </div>
+                        <div class="containerTela6">
+                            <h1 id="user 6">Máquina 6</h1>
+                            <canvas id="lineChart6"></canvas>
+                        </div>
+                    </div>
+        
+                    <div class="terceiroGrupo">
+                        <div class="containerTela7">
+                            <h1 id="user 7">Máquina 7</h1>
+                            <canvas id="lineChart7"></canvas>
+                        </div>
+                </div>
+            </section>
+
+        <!-- <section class="sectionTelas">
             <div class="primeiroGrupo">
                 <div class="containerTela1">
-                    <!-- <h1>Tela 1</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador1"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
+                    <h1 id="user 1">Máquina 1</h1>
+                    <canvas id="lineChart1"></canvas>
                 </div>
                 <div class="containerTela2">
-                    <!-- <h1>Tela 2</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador2"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
+                    <h1 id="user 2">Máquina 2</h1>
+                    <canvas id="lineChart2"></canvas>
                 </div>
                 <div class="containerTela3">
-                    <!-- <h1>Tela 3</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador3"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
-                </div>
-                <div class="containerTela4">
-                    <!-- <h1>Tela 4</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador4"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
+                    <h1 id="user 3">Máquina 3</h1>
+                    <canvas id="lineChart3"></canvas>
                 </div>
             </div>
-
-
 
             <div class="segundoGrupo">
+                <div class="containerTela4">
+                    <h1 id="user 4">Máquina 4</h1>
+                    <canvas id="lineChart4"></canvas>
+                </div>
                 <div class="containerTela5">
-                    <!-- <h1>Tela 5</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador5"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
+                    <h1 id="user 5">Máquina 5</h1>
+                    <canvas id="lineChart5"></canvas>
                 </div>
                 <div class="containerTela6">
-                    <!-- <h1>Tela 6</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador6"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div> -->
-                </div>
-                <!-- <div class="containerTela7">
-                <h1>Tela 7</h1>
-                <div class="contentProdutividade">
-                    <canvas id="computador7"></canvas>
-                    <p class="lblProdutividade">Produtividade</p>
-                </div>
-            </div> -->
-                <div class="containerTela8" onclick="cadastrarMaquina()">
-                    <h1>+</h1>
+                    <h1 id="user 6">Máquina 6</h1>
+                    <canvas id="lineChart6"></canvas>
                 </div>
             </div>
-        </section>
+
+            <div class="terceiroGrupo">
+                <div class="containerTela7">
+                    <h1 id="user 7">Máquina 7</h1>
+                    <canvas id="lineChart7"></canvas>
+                </div>
+                 <div class="containerTela8" onclick="cadastrarMaquina()">
+                    <h1>+</h1>
+                </div> -->
+            </div>
     </main>
 </body>
 
 </html>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
+
+    var graficoPizzaPlotado = false;
+
+    var idGraficos = {
+        1: 'lineChart1',
+        2: 'lineChart2',
+        3: 'lineChart3',
+        4: 'lineChart4',
+        5: 'lineChart5',
+        6: 'lineChart6',
+        7: 'lineChart7'
+    }
+
     // Gráfico KPI
-    const ctx = document.getElementById('kpi');
-    new Chart(ctx, {
-        //type: 'polarArea',
-        type: 'pie',
-        data: {
-            datasets: [{
-                label: '# of Votes',
-                data: [3, 2, 1],
-                borderWidth: 1,
-                backgroundColor: [
-                    'rgb(36, 224, 96)',
-                    'rgb(240, 217, 46)',
-                    'rgb(250, 77, 77)'],
-            }],
-            labels: ['Produtivo(consumo: 30%-65%)', 'Inprodutivo(consumo: <30%)', 'Defeito máquina(consumo: >65%)']
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    window.onload = function () {
+        setInterval(obterGraficos, 2000);
+    };
+
+    var qtdCritico = 0;
+    var qtdAlerta = 0;
+    var qtdNormal = 0;
+    var qtdTotal = [];
+    var chartTotal;
+    var chartsProdutividade = {};
+
+    // API | começo
+    let proximaAtualizacao;
+    // verificar_autenticacao()
+
+    function obterGraficos() {
+        obterGraficoProdutividade(1, 1);
+        obterGraficoProdutividade(2, 2);
+        obterGraficoProdutividade(3, 3);
+        obterGraficoProdutividade(4, 4);
+        obterGraficoProdutividade(5, 5);
+        obterGraficoProdutividade(6, 6);
+        obterGraficoProdutividade(7, 7);
+        obterGraficoTotal();
+    }
+
+    function obterGraficoProdutividade(idNotebook, idGrafico) {
+        fetch(`/medidas/ultimas/${idNotebook}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    plotarGraficoProdutividade(resposta, idNotebook, idGrafico);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
             }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+            fetch(`/medidas/usuario/${idNotebook}`, { cache: 'no-store' }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          console.log(`Dados recebidos(usuario): ${JSON.stringify(resposta)}`);
+          resposta.reverse();
+
+          var usuario = document.getElementById(`user ${idNotebook}`);
+          usuario.innerHTML = resposta[0].nome;
+        });
+      } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+      }
+    })
+      .catch(function (error) {
+        console.error(`Erro na obtenção de usuário: ${error.message}`);
+      });
+        //
+    }
+
+    //Esta função (plotarGrafico) usa os dados capturados na função anterior para criar o gráfico
+    function plotarGraficoProdutividade(resposta, idNotebook, idGrafico) {
+        console.log('iniciando plotagem do gráfico...');
+
+        // Criando estrutura para plotar gráfico - labels
+        let labels = [];
+
+        // Criando estrutura para plotar gráfico - dados
+        let dados = {
+            labels: labels,
+            datasets: [{
+                label: 'Produtividade',
+                data: [],
+                fill: 0,
+                borderColor: 'rgb(27, 152, 224)',
+                backgroundColor: 'rgb(27, 152, 224)',
+                tension: 0.1
+            }]
+        };
+
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(resposta);
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            labels.push(registro.momento_grafico);
+            var produtividadeAtual = (registro.porcentagemUsoMemoria + registro.porcentagemUsoProcessador) / 2;
+            dados.datasets[0].data.push(produtividadeAtual);
         }
-    });
 
-    //Gráficos monitoração
-    const horas = [
-        "10:00",
-        "10:05",
-        "10:10",
-        "10:15",
-        "10:20",
-        "10:25",
-        "10:30",
-        "10:35",
-        "10:40",
-        "10:45",
-        "10:50",
-        "10:55",
-        "11:00",
-        "11:05",
-        "11:10"
-    ]
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(labels)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
 
-    const dataTela1 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 1",
-            backgroundColor: 'rgb(240, 217, 46)',
-            borderColor: 'rgb(240, 217, 46)',
-            data: [0, 20, 19, 21, 18, 22, 26, 25, 27, 29, 30, 28, 26, 22, 25, 24]
-        }]
-    };
-    const config_tela1 = {
-        type: 'line',
-        data: dataTela1,
-        options: {}
-    };
-    const tela1 = new Chart(
-        document.getElementById('computador1'), config_tela1
-    );
+        const config = {
+            type: 'line',
+            data: dados,
+        };
+        if (!arrayEquals(chartsProdutividade[idGrafico]?.data.datasets[0].data, config.data.datasets[0].data)) {
+            if (chartsProdutividade[idGrafico]) { chartsProdutividade[idGrafico].destroy(); }
+            chartsProdutividade[idGrafico] = new Chart(
+                document.getElementById(idGraficos[idGrafico]),
+                config
+            );
 
-    const dataTela2 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 2",
-            backgroundColor: 'rgb(36, 224, 96)',
-            borderColor: 'rgb(36, 224, 96)',
-            data: [0, 40, 41, 35, 39, 35, 41, 32, 30, 39, 37, 45, 49, 42, 33, 35]
-        }]
-    };
-    const config_tela2 = {
-        type: 'line',
-        data: dataTela2,
-        options: {}
-    };
-    const tela2 = new Chart(
-        document.getElementById('computador2'), config_tela2
-    );
+        }
+    }
 
-    const dataTela3 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 3 ",
-            backgroundColor: 'rgb(250, 77, 77)',
-            borderColor: 'rgb(250, 77, 77)',
-            data: [0, 70, 71, 75, 89, 85, 91, 82, 80, 79, 77, 75, 79, 82, 83, 85]
-        }]
-    };
-    const config_tela3 = {
-        type: 'line',
-        data: dataTela3,
-        options: {}
-    };
-    const tela3 = new Chart(
-        document.getElementById('computador3'), config_tela3
-    );
+    function arrayEquals(a, b) {
+        return Array.isArray(a) &&
+            Array.isArray(b) &&
+            a.length === b.length &&
+            a.every((val, index) => val === b[index]);
+    }
 
-    const dataTela4 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 4",
-            backgroundColor: 'rgb(36, 224, 96)',
-            borderColor: 'rgb(36, 224, 96)',
-            data: [0, 40, 41, 35, 39, 35, 41, 32, 30, 39, 37, 45, 49, 42, 33, 35]
-        }]
-    };
-    const config_tela4 = {
-        type: 'line',
-        data: dataTela4,
-        options: {}
-    };
-    const tela4 = new Chart(
-        document.getElementById('computador4'), config_tela4
-    );
+    function obterGraficoTotal() {
+        fetch(`/medidas/qtdTotal`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos (qtdNormal): ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+                    qtdTotal = [resposta[1].quantidade_total, resposta[2].quantidade_total, resposta[0].quantidade_total];
+                }).then(function () {
+                    plotarGraficoPizza();
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
 
-    const dataTela5 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 5",
-            backgroundColor: 'rgb(36, 224, 96)',
-            borderColor: 'rgb(36, 224, 96)',
-            data: [0, 40, 41, 35, 39, 35, 41, 32, 30, 39, 37, 45, 49, 42, 33, 35]
-        }]
-    };
-    const config_tela5 = {
-        type: 'line',
-        data: dataTela5,
-        options: {}
-    };
-    const tela5 = new Chart(
-        document.getElementById('computador5'), config_tela5
-    );
+    }
 
-    const dataTela6 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 6",
-            backgroundColor: 'rgb(240, 217, 46)',
-            borderColor: 'rgb(240, 217, 46)',
-            data: [0, 70, 71, 75, 89, 85, 91, 82, 80, 79, 77, 75, 79, 82, 83, 85]
-        }]
-    };
-    const config_tela6 = {
-        type: 'line',
-        data: dataTela6,
-        options: {}
-    };
-    const tela6 = new Chart(
-        document.getElementById('computador6'), config_tela6
-    );
+    function plotarGraficoPizza() {
+        const ctx = document.getElementById("kpi").getContext("2d");
 
-    const dataTela7 = {
-        labels: horas,
-        datasets: [{
-            label: "Indicador Produtividade Tela: 7",
-            backgroundColor: 'rgb(250, 77, 77)',
-            borderColor: 'rgb(250, 77, 77)',
-            data: [0, 70, 71, 75, 89, 85, 91, 82, 80, 79, 77, 75, 79, 82, 83, 85]
-        }]
-    };
-    const config_tela7 = {
-        type: 'line',
-        data: dataTela7,
-        options: {}
-    };
-    const tela7 = new Chart(
-        document.getElementById('computador7'), config_tela7
-    );
+        if (!arrayEquals(chartTotal?.data.datasets[0].data, qtdTotal)) {
+            if (chartTotal) { chartTotal.destroy(); }
+            chartTotal = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        label: 'Quantidade',
+                        data: qtdTotal,
+                        borderWidth: 0,
+                        backgroundColor: [
+                            'rgb(36, 224, 96)',
+                            'rgb(240, 217, 46)',
+                            'rgb(250, 77, 77)'
+                        ],
+                        hoverOffset: 4,
+                    }],
+                    labels: ['Produtivo', 'Alerta', 'Crítico']
+                }
+            });
+        }
+
+    }
 
 
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página
+    function atualizarGrafico(idNotebook, dados, myChart, idGrafico) {
+        fetch(`/medidas/ultimas/${idNotebook}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+                    console.log(idGrafico);
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico:`);
+                    console.log(dados);
+
+                    if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        console.log("---------------------------------------------------------------")
+                        console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+
+                        console.log("Horário do novo dado capturado:")
+                        console.log(novoRegistro[0].momento_grafico)
+                        console.log("Horário do último dado capturado:")
+                        console.log(dados.labels[dados.labels.length - 1])
+                        console.log("---------------------------------------------------------------")
+                    } else {
+                        var produtividadeAtual = (novoRegistro[0].porcentagemUsoMemoria + novoRegistro[0].porcentagemUsoProcessador) / 2;
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+
+                        console.log(produtividadeAtual);
+
+                        dados.datasets[0].data.push(produtividadeAtual); // incluir uma nova medida de temperatura
+                        myChart.update();
+                    }
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idNotebook, dados, myChart, idGrafico), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idNotebook, dados, myChart, idGrafico, plota), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        obterGraficos();
+    }
 </script>

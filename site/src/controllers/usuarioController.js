@@ -140,6 +140,7 @@ function criar_maquina(req, res) {
     var nomeModeloVar = req.body.nomeModeloServer;
     var RAMVar = req.body.RAMServer;
     var CPUVar = req.body.CPUServer;
+    var usuarioResponsavelVar = req.body.usuarioResponsavelServer;
     var IPVar = req.body.IPServer;
     var idEmpresa = req.body.idEmpresaServer;
     var idUsuario = req.body.idUsuarioServer;
@@ -150,16 +151,18 @@ function criar_maquina(req, res) {
         res.status(400).send("A marca está undefined!");
     } else if (nomeModeloVar == undefined) {
         res.status(400).send("O modelo está undefined!"); 
-    } else if (RAMVar == undefined) {
-        res.status(400).send("A RAM está undefined!");
-    } else if (CPUVar == undefined){
-        res.status(400).send("A CPU está undefined!");
-    } else if(IPVar == undefined){
+    } else if (IPVar == undefined){
+        res.status(400).send("O Usuário Responsável está undefined!");
+    } else if(usuarioResponsavelVar == undefined){
         res.status(400).send("O IP do notebook está undefined!");
     } else if(idUsuario == undefined){
         res.status(400).send("O id do Usuário está undefined!");
+    } else if(RAMVar == undefined){
+        res.status(400).send("A RAM está undefined!");
+    } else if(CPUVar == undefined){
+        res.status(400).send("O CPU está undefined!");
     } else {
-        usuarioModel.criar_maquina(nomeMarcaVar, nomeModeloVar, RAMVar, CPUVar, IPVar, idUsuario, idEmpresa)
+        usuarioModel.criar_maquina(nomeMarcaVar, nomeModeloVar, RAMVar, CPUVar, usuarioResponsavelVar, IPVar, idUsuario, idEmpresa)
             .then(
                 function (resultado) {
                     res.json(resultado);
