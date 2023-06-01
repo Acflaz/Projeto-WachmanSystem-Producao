@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'WachmanSystemProducao'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6A290490EEBD42BF913A9AE300ECE29A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F106D49D9D4A49F39DC9AE984ED9BB44 }}
           package: .
