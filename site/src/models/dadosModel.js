@@ -23,10 +23,12 @@ function inserirRanking(qtdPontuacao, fkUsuario, fkEmpresa) {
     var instrucao = `
     INSERT INTO ranking (qtdPontuacao, fkUsuario, fkEmpresa) VALUES ('${qtdPontuacao}', '${fkUsuario}', '${fkEmpresa}');
     `;
+    return database.executar(instrucao);
   } else if(process.env.AMBIENTE_PROCESSO === "desenvolvimento") {
     var instrucao = `
     INSERT INTO ranking (qtdPontuacao, fkUsuario, fkEmpresa) VALUES ('${qtdPontuacao}', '${fkUsuario}', '${fkEmpresa}');
     `;
+    return database.executar(instrucao);
   } else {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -44,10 +46,12 @@ function atualizarRanking(qtdPontuacao, fkUsuario, fkEmpresa) {
     var instrucao = `
     UPDATE Ranking SET qtdPontuacao = qtdPontuacao + '${qtdPontuacao}' WHERE fkUsuario = '${fkUsuario}' AND fkEmpresa = '${fkEmpresa}';
     `;
+    return database.executar(instrucao);
   } else if(process.env.AMBIENTE_PROCESSO === "desenvolvimento") {
     var instrucao = `
     UPDATE Ranking SET qtdPontuacao = qtdPontuacao + '${qtdPontuacao}' WHERE fkUsuario = '${fkUsuario}' AND fkEmpresa = '${fkEmpresa}';
     `;
+    return database.executar(instrucao);
   } else {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -66,10 +70,12 @@ function selecionarRanking() {
     var instrucao = `
     SELECT fkUsuario FROM ranking;
     `;
+    return database.executar(instrucao);
   } else if(process.env.AMBIENTE_PROCESSO === "desenvolvimento") {
     var instrucao = `
     SELECT fkUsuario FROM ranking;
     `;
+    return database.executar(instrucao);
   } else {
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
@@ -88,16 +94,17 @@ function selecionarRankingFiltrado() {
     var instrucao = `
     SELECT u.nome, r.qtdPontuacao FROM ranking r JOIN usuario u ON r.fkUsuario = u.idUsuario ORDER BY r.qtdPontuacao DESC;
     `;
+    return database.executar(instrucao);
   } else if(process.env.AMBIENTE_PROCESSO === "desenvolvimento") {
     var instrucao = `
     SELECT u.nome, r.qtdPontuacao FROM ranking r JOIN usuario u ON r.fkUsuario = u.idUsuario ORDER BY r.qtdPontuacao DESC;
     `;
+    return database.executar(instrucao);
   } else {
     console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
+
   }
 }
-
 
 module.exports = {
   selecionar_tudo,
