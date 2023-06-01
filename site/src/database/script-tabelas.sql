@@ -128,25 +128,22 @@ PRIMARY KEY(idUsuario, fkEmpresa)
 
 CREATE TABLE alerta (
 idAlerta INT PRIMARY KEY IDENTITY(1,1),
-minCpu DECIMAL(10,2),
-maxCpu DECIMAL(10,2),
-minDisco DECIMAL(10,2),
-maxDisco DECIMAL(10,2),
-minMemoria DECIMAL(10,2),
-maxMemoria DECIMAL(10,2),
-minRede DECIMAL(10,2),
-maxRede DECIMAL(10,2),
+minCpu decimal(10,2),
+maxCpu decimal(10,2),
+minMemoria decimal(10,2),
+maxMemoria decimal(10,2),
 fkEmpresa INT,
 FOREIGN KEY (fkEmpresa) REFERENCES empresa (idEmpresa)
 );
 
 CREATE TABLE notebook (
 idNotebook INT PRIMARY KEY IDENTITY(1,1),
-marca VARCHAR(45),
-modelo VARCHAR(45),
-capacidadeRam VARCHAR(45),
-tipoDisco VARCHAR(45),
-velocidadeCpu VARCHAR(45),
+marca varchar(45),
+modelo varchar(45),
+capacidadeRam varchar(45),
+velocidadeCpu varchar(45),
+usuarioResponsavel varchar(45),
+ipNotebook varchar(45),
 fkUsuario INT,
 fkEmpresa INT,
 FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
@@ -154,16 +151,20 @@ FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
 
 CREATE TABLE dadosCapturados (
 idDadosCapturados INT PRIMARY KEY IDENTITY(1,1),
-qtdUsadaRam VARCHAR(45),
-tempoAtvDisco VARCHAR(45),
-tempoAtvCpu VARCHAR(45),
-utilizacaoCpu VARCHAR(45),
-qtdProcessoCpu VARCHAR(45),
-qtdThreadsCpu VARCHAR(45),
+porcentagemUsoMemoria INT,
+porcentagemUsoProcessador INT,
 dataHora DATETIME DEFAULT CURRENT_TIMESTAMP,
 fkNotebook INT,
 FOREIGN KEY (fkNotebook) REFERENCES notebook (idNotebook),
 fkUsuario INT,
 fkEmpresa INT,
 FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
+);
+
+CREATE TABLE ranking (
+idRanking INT IDENTITY(1,1) PRIMARY KEY,
+qtdPontuacao INT,
+fkUsuario INT,
+fkEmpresa INT,
+FOREIGN KEY (fkUsuario, fkEmpresa) REFERENCES usuario (idUsuario, fkEmpresa)
 );
