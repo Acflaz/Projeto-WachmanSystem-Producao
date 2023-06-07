@@ -15,94 +15,94 @@
 </head>
 
 <body onload="obterDadosGrafico()">
-        <section class="navbar">
-            <div class="logo">
-                <img src="assets/logo.png" alt="" onclick="home()">
-            </div>
-            <nav>
-                <li><a href="../cadastroUsuario.html">
-                        <img src="assets/cadastro.png" class="campo-usuario" alt="">
-                    </a></li>
-                <li><a href="telaMetricas.html">
-                        <img src="assets/configuracoes.png" alt="">
-                    </a></li>
-                <li><a href="telaMaquina.html">
-                        <img src="../assets/aba.png" alt="">
-                    </a></li>
-                <li><a href="https://watchmansystem.atlassian.net/jira/servicedesk/projects/WS/queues/custom/19">
-                        <img src="../assets/apoio-suporte.png" alt="">
-                    </a></li>
-            </nav>
-            <div class="logout">
-                <li><a href="../login.html">
-                        <img src="assets/sair.png" alt="">
-                    </a></li>
-            </div>
-        </section>
+    <section class="navbar">
+        <div class="logo">
+            <img src="assets/logo.png" alt="" onclick="home()">
+        </div>
+        <nav>
+            <li><a href="../cadastroUsuario.html">
+                    <img src="assets/cadastro.png" class="campo-usuario" alt="">
+                </a></li>
+            <li><a href="telaMetricas.html">
+                    <img src="assets/configuracoes.png" alt="">
+                </a></li>
+            <li><a href="telaMaquina.html">
+                    <img src="../assets/aba.png" alt="">
+                </a></li>
+            <li><a href="https://watchmansystem.atlassian.net/jira/servicedesk/projects/WS/queues/custom/19">
+                    <img src="../assets/apoio-suporte.png" alt="">
+                </a></li>
+        </nav>
+        <div class="logout">
+            <li><a href="../login.html">
+                    <img src="assets/sair.png" alt="">
+                </a></li>
+        </div>
+    </section>
 
     <main>
         <section class="sectionPerfil" onclick="entrarPerfil()">
             <div class="containerPerfil">
-              <div class="contentImage" id="imageUser">
-      
-              </div>
-              <div class="contentName">
-                <p id="nameUser">Suporte</p>
-              </div>
+                <div class="contentImage" id="imageUser">
+
+                </div>
+                <div class="contentName">
+                    <p id="nameUser">Suporte</p>
+                </div>
             </div>
-          </section>
+        </section>
 
-          <section class="sectionKPI">
+        <section class="sectionKPI">
             <div class="GroupKPI">
-              <div class="containerKPI">
-                <h1> Indicadores de Produtividade </h1>
-                <div class="informationAnalytics">
-                    <div class="graficoKpi">
-                        <canvas id="kpi"></canvas>
+                <div class="containerKPI">
+                    <h1> Indicadores de Produtividade </h1>
+                    <div class="informationAnalytics">
+                        <div class="graficoKpi">
+                            <canvas id="kpi"></canvas>
+                        </div>
                     </div>
                 </div>
-              </div>
-            </section>
+        </section>
 
-            <section class="sectionTelas">
-                <div class="center">
-                    <div class="primeiroGrupo">
-                        <div class="containerTela1">
-                            <h1 id="user 1">Máquina 1</h1>
-                            <canvas id="lineChart1"></canvas>
-                        </div>
-                        <div class="containerTela2">
-                            <h1 id="user 2">Máquina 2</h1>
-                            <canvas id="lineChart2"></canvas>
-                        </div>
-                        <div class="containerTela3">
-                            <h1 id="user 3">Máquina 3</h1>
-                            <canvas id="lineChart3"></canvas>
-                        </div>
+        <section class="sectionTelas">
+            <div class="center">
+                <div class="primeiroGrupo">
+                    <div class="containerTela1">
+                        <h1 id="user 1">Máquina 1</h1>
+                        <canvas id="lineChart1"></canvas>
                     </div>
-
-                    <div class="segundoGrupo">
-                        <div class="containerTela4">
-                            <h1 id="user 4">Máquina 4</h1>
-                            <canvas id="lineChart4"></canvas>
-                        </div>
-                        <div class="containerTela5">
-                            <h1 id="user 5">Máquina 5</h1>
-                            <canvas id="lineChart5"></canvas>
-                        </div>
-                        <div class="containerTela6">
-                            <h1 id="user 6">Máquina 6</h1>
-                            <canvas id="lineChart6"></canvas>
-                        </div>
+                    <div class="containerTela2">
+                        <h1 id="user 2">Máquina 2</h1>
+                        <canvas id="lineChart2"></canvas>
                     </div>
-        
-                    <div class="terceiroGrupo">
-                        <div class="containerTela7">
-                            <h1 id="user 7">Máquina 7</h1>
-                            <canvas id="lineChart7"></canvas>
-                        </div>
+                    <div class="containerTela3">
+                        <h1 id="user 3">Máquina 3</h1>
+                        <canvas id="lineChart3"></canvas>
+                    </div>
                 </div>
-            </section>
+
+                <div class="segundoGrupo">
+                    <div class="containerTela4">
+                        <h1 id="user 4">Máquina 4</h1>
+                        <canvas id="lineChart4"></canvas>
+                    </div>
+                    <div class="containerTela5">
+                        <h1 id="user 5">Máquina 5</h1>
+                        <canvas id="lineChart5"></canvas>
+                    </div>
+                    <div class="containerTela6">
+                        <h1 id="user 6">Máquina 6</h1>
+                        <canvas id="lineChart6"></canvas>
+                    </div>
+                </div>
+
+                <div class="terceiroGrupo">
+                    <div class="containerTela7">
+                        <h1 id="user 7">Máquina 7</h1>
+                        <canvas id="lineChart7"></canvas>
+                    </div>
+                </div>
+        </section>
 
         <!-- <section class="sectionTelas">
             <div class="primeiroGrupo">
@@ -143,7 +143,7 @@
                  <div class="containerTela8" onclick="cadastrarMaquina()">
                     <h1>+</h1>
                 </div> -->
-            </div>
+        </div>
     </main>
 </body>
 
@@ -205,22 +205,22 @@
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
 
-            fetch(`/medidas/usuario/${idNotebook}`, { cache: 'no-store' }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-          console.log(`Dados recebidos(usuario): ${JSON.stringify(resposta)}`);
-          resposta.reverse();
+        fetch(`/medidas/usuario/${idNotebook}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos(usuario): ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-          var usuario = document.getElementById(`user ${idNotebook}`);
-          usuario.innerHTML = resposta[0].nome;
-        });
-      } else {
-        console.error('Nenhum dado encontrado ou erro na API');
-      }
-    })
-      .catch(function (error) {
-        console.error(`Erro na obtenção de usuário: ${error.message}`);
-      });
+                    var usuario = document.getElementById(`user ${idNotebook}`);
+                    usuario.innerHTML = resposta[0].nome;
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção de usuário: ${error.message}`);
+            });
         //
     }
 
@@ -290,7 +290,29 @@
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos (qtdNormal): ${JSON.stringify(resposta)}`);
                     resposta.reverse();
-                    qtdTotal = [resposta[1].quantidade_total, resposta[2].quantidade_total, resposta[0].quantidade_total];
+
+                    if (resposta.length == 3) {
+                        qtdTotal = [resposta[0].quantidade_total, resposta[1].quantidade_total, resposta[2].quantidade_total]
+                    } else if(resposta.length == 2) {    
+                        if (resposta[0].classificacao == 'Alerta' && resposta[1].classificacao == 'Crítico') {
+                            qtdTotal = [resposta[0].quantidade_total, resposta[1].quantidade_total, 0]
+                        } else if (resposta[0].classificacao == 'Alerta' && resposta[1].classificacao == 'Normal') {
+                            qtdTotal = [resposta[0].quantidade_total, 0, resposta[1].quantidade_total]
+                        } else {
+                            qtdTotal = [0, resposta[0].quantidade_total, resposta[1].quantidade_total]
+                        }
+                    } else {
+                        if (resposta[0].classificacao == 'Alerta'){
+                            qtdTotal = [resposta[0].quantidade_total, 0, 0]
+                        } else if (resposta[0].classificacao == 'Crítico'){
+                            qtdTotal = [0, resposta[0].quantidade_total, 0]
+                        } else {
+                            qtdTotal = [0, 0, resposta[0].quantidade_total]
+                        }
+                    }
+
+                    console.log(qtdTotal);
+                    console.log("AAAAAAAAAA" + qtdTotal);
                 }).then(function () {
                     plotarGraficoPizza();
                 });
@@ -307,6 +329,7 @@
     function plotarGraficoPizza() {
         const ctx = document.getElementById("kpi").getContext("2d");
 
+
         if (!arrayEquals(chartTotal?.data.datasets[0].data, qtdTotal)) {
             if (chartTotal) { chartTotal.destroy(); }
             chartTotal = new Chart(ctx, {
@@ -317,20 +340,19 @@
                         data: qtdTotal,
                         borderWidth: 0,
                         backgroundColor: [
-                            'rgb(36, 224, 96)',
                             'rgb(240, 217, 46)',
-                            'rgb(250, 77, 77)'
+                            'rgb(240, 0, 0)',
+                            'rgb(36, 224, 96)',
                         ],
                         hoverOffset: 4,
                     }],
-                    labels: ['Produtivo', 'Alerta', 'Crítico']
+                    labels: ['Alerta', 'Crítico', 'Produtivo']
                 }
             });
         }
 
     }
-
-
+    
     // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página
     function atualizarGrafico(idNotebook, dados, myChart, idGrafico) {
         fetch(`/medidas/ultimas/${idNotebook}`, { cache: 'no-store' }).then(function (response) {

@@ -85,7 +85,8 @@ function qtdTotal() {
         ) subquery
         WHERE classificacao IS NOT NULL
         GROUP BY classificacao
-        ) result;`;
+        ) result
+        ORDER BY classificacao ASC;`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `SELECT
