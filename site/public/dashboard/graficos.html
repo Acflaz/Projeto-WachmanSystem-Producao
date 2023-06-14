@@ -289,7 +289,7 @@
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos (qtdNormal): ${JSON.stringify(resposta)}`);
-                    resposta.reverse();
+                    // resposta.reverse();
 
                     if (resposta.length == 3) {
                         qtdTotal = [resposta[0].quantidade_total, resposta[1].quantidade_total, resposta[2].quantidade_total]

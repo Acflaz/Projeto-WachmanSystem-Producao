@@ -38,7 +38,7 @@ function buscarMedidasEmTempoReal(idNotebook) {
         dataHora,
         CONVERT(varchar, dataHora, 108) AS momento_grafico
         FROM dadosCapturados
-        WHERE fkNotebook = 1
+        WHERE fkNotebook = ${idNotebook}
         ORDER BY idDadosCapturados DESC;
     `;
 
