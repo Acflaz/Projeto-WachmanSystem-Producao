@@ -162,20 +162,31 @@
           resposta.reverse();
 
           // var produtividadeAtual = (resposta[0].porcentagemUsoMemoria + resposta[0].porcentagemUsoProcessador) / 2; 
-          if ((resposta.porcentagemUsoProcessador >= 0 && resposta.porcentagemUsoProcessador <= 25) &&
-            (resposta.porcentagemUsoMemoria >= 0 && resposta.porcentagemUsoMemoria < 60)) {
-            var elemento = document.getElementById(`card c${idNotebook}`);
-            elemento.style = "border-bottom: yellow 5px solid";
-          } else if (resposta.porcentagemUsoProcessador > 60 && resposta.porcentagemUsoMemoria > 70) {
+          if (resposta.porcentagemProcessador > 60 || resposta.porcentagemMemoria > 70) {
             var elemento = document.getElementById(`card c${idNotebook}`);
             elemento.style = "border-bottom: red 5px solid";
-          } else {
+          } else if (resposta.porcentagemProcessador >= 25 && resposta.porcentagemMemoria >= 60) {
             var elemento = document.getElementById(`card c${idNotebook}`);
             elemento.style = "border-bottom: green 5px solid";
-
-            var hora = document.getElementById(`hours ${idNotebook}`);
-            hora.innerHTML = resposta[0].momento_grafico
+          } else {
+            var elemento = document.getElementById(`card c${idNotebook}`);
+            elemento.style = "border-bottom: yellow 5px solid";
           }
+
+          // if ((resposta.porcentagemUsoProcessador >= 0 && resposta.porcentagemUsoProcessador <= 25) &&
+          //   (resposta.porcentagemUsoMemoria >= 0 && resposta.porcentagemUsoMemoria < 60)) {
+          //   var elemento = document.getElementById(`card c${idNotebook}`);
+          //   elemento.style = "border-bottom: yellow 5px solid";
+          // } else if (resposta.porcentagemUsoProcessador > 60 && resposta.porcentagemUsoMemoria > 70) {
+          //   var elemento = document.getElementById(`card c${idNotebook}`);
+          //   elemento.style = "border-bottom: red 5px solid";
+          // } else {
+          //   var elemento = document.getElementById(`card c${idNotebook}`);
+          //   elemento.style = "border-bottom: green 5px solid";
+
+          //   var hora = document.getElementById(`hours ${idNotebook}`);
+          //   hora.innerHTML = resposta[0].momento_grafico
+          // }
         });
       } else {
         console.error('Nenhum dado encontrado ou erro na API');
