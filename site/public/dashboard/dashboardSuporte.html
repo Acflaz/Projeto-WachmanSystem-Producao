@@ -162,10 +162,10 @@
           resposta.reverse();
 
           // var produtividadeAtual = (resposta[0].porcentagemUsoMemoria + resposta[0].porcentagemUsoProcessador) / 2; 
-          if (resposta.porcentagemProcessador > 60 || resposta.porcentagemMemoria > 70) {
+          if (resposta.porcentagemUsoProcessador > 60 || resposta.porcentagemUsoMemoria > 70) {
             var elemento = document.getElementById(`card c${idNotebook}`);
             elemento.style = "border-bottom: red 5px solid";
-          } else if (resposta.porcentagemProcessador >= 25 && resposta.porcentagemMemoria >= 60) {
+          } else if (resposta.porcentagemUsoProcessador >= 25 && resposta.porcentagemUsoMemoria >= 60) {
             var elemento = document.getElementById(`card c${idNotebook}`);
             elemento.style = "border-bottom: green 5px solid";
           } else {
